@@ -1,5 +1,3 @@
-# config.yaml
-
 data:
   file_path: "data/sample_data.csv"
   target_column: "Failure_Flag"
