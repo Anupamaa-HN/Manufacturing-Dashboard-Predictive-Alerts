@@ -1,0 +1,13 @@
+from sklearn.ensemble import RandomForestClassifier
+import pickle
+
+# Example: Train a model
+X = data[['temperature', 'vibration', 'speed', 'runtime_hours']]
+y = data['failure']
+
+model = RandomForestClassifier()
+model.fit(X, y)
+
+# ✅ Save the trained model
+with open('predictive_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
