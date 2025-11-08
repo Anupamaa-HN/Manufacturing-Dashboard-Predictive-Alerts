@@ -1,20 +1,23 @@
-name: Run Notebook
+# config.yaml
 
-on: [push]
+data:
+  file_path: "data/sample_data.csv"
+  target_column: "Failure_Flag"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-      - name: Run notebook
-        run: |
-          jupyter nbconvert --to notebook --execute manufacturing_dashboard.ipynb
+model:
+  type: "RandomForestClassifier"
+  saved_model_path: "predictive_model.pkl"
+
+visualization:
+  dashboard_tool: "Power BI"
+  metrics_to_display:
+    - Temperature
+    - Vibration
+    - Speed
+    - Runtime
+    - Failure Prediction
+
+alerts:
+  enable: true
+  threshold_temperature: 80
+  threshold_vibration: 5.0
